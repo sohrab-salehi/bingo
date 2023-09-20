@@ -32,6 +32,11 @@ body {
       height: 100%;
       border: 1px solid black;
     }
+    .center-cell {
+      background-color: burlywood;
+      border-radius: 100%;
+    }
+
     .unselected {
       &:hover {
         background-color: aqua;

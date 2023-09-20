@@ -30,13 +30,19 @@ function Home() {
         <div className="flex-container">
           {cells.slice(i * 5, (i + 1) * 5).map((cell: Cell) => (
             <div key={cell.id}>
-              <button
-                className={cell.selected ? 'selected' : 'unselected'}
-                onClick={() => onClickCell(cell.id)}
-                type="button"
-              >
-                {cell.text}
-              </button>
+              {cell.id === 13 ? (
+                <button className="center-cell" type="button">
+                  {cell.text}
+                </button>
+              ) : (
+                <button
+                  className={cell.selected ? 'selected' : 'unselected'}
+                  onClick={() => onClickCell(cell.id)}
+                  type="button"
+                >
+                  {cell.id} - {cell.text}
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -45,6 +51,7 @@ function Home() {
     }
     return board;
   };
+
   return <div>{createBoard()}</div>;
 }
 
