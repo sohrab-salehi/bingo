@@ -32,7 +32,7 @@ function Home() {
             <div key={cell.id}>
               {cell.id === 13 ? (
                 <button className="center-cell" type="button">
-                  {cell.text}
+                  <span className="cell-text">{cell.text}</span>
                 </button>
               ) : (
                 <button
@@ -40,7 +40,8 @@ function Home() {
                   onClick={() => onClickCell(cell.id)}
                   type="button"
                 >
-                  {cell.id} - {cell.text}
+                  <span className="cell-text">{cell.text}</span>
+                  <span className="cell-number">{cell.id}</span>
                 </button>
               )}
             </div>
