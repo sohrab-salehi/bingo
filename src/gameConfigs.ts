@@ -16,7 +16,7 @@ const configs = {
     },
     { id: 11, text: 'Can somebody grant presenter rights?', selected: false },
     { id: 12, text: 'Can you email that to everyone?', selected: false },
-    { id: 13, text: 'CONF CALL BINGO', selected: false },
+    { id: 13, text: 'CONF CALL BINGO', selected: true },
     { id: 14, text: 'Sorry, I had problems loging in', selected: false },
     { id: 15, text: '(Animal noises in the background)', selected: false },
     { id: 16, text: "Sorry I didn't found the conference id", selected: false },
