@@ -95,14 +95,69 @@ body {
 @keyframes magnifyAndColorChange {
   0% {
     transform: scale(1);
-    background-color: red;
+    background-color: #ffec3d;
   }
   50% {
     transform: scale(3);
-    background-color: blue;
+    background-color: #1677ff;
   }
   100% {
     transform: scale(1);
-    background-color: red;
+    background-color: #ffec3d;
+  }
+}
+
+
+/* Responsive */
+/* For Tablet View */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .flex-container {
+    .center-cell {
+      button {
+        font-size: 12px;
+      }
+    }
+
+    div {
+      padding: 6px;
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .flex-container {
+    gap: 4px;
+    margin-top: 4px;
+  
+    .center-cell {
+      border: 2px dashed;
+  
+      button {
+        font-size: 10px;
+      }
+    }
+    
+    div {
+      padding: 2px;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+  
+      button {
+        padding: 2px;
+        border-radius: 4px;
+      }
+  
+      .cell-text {
+        font-size: 7px;
+      }
+  
+      .cell-number {
+        font-size: 7px;
+      }
+    }
   }
 }
