@@ -19,13 +19,13 @@ body {
   .center-cell {
     background-color: transparent;
     border-radius: 100%;
-    border: 3px dashed;
+    border: 2px dashed;
 
     button {
       border-radius: 100%;
       background-color: transparent;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .win {
@@ -126,24 +126,24 @@ body {
   }
 }
 
-/* For Mobile Portrait View */
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
+/* For Mobile View */
+@media screen and (min-device-width: 480px) and (max-device-width: 767px) {
   .flex-container {
     gap: 4px;
     margin-top: 4px;
   
     .center-cell {
-      border: 2px dashed;
+      border: 1px dashed;
   
       button {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
     
     div {
       padding: 2px;
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       border-radius: 4px;
   
       button {
@@ -152,11 +152,47 @@ body {
       }
   
       .cell-text {
-        font-size: 7px;
+        font-size: 10px;
       }
   
       .cell-number {
-        font-size: 7px;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+/* For Small Mobile View */
+@media screen and (max-device-width: 480px) {
+  .flex-container {
+    gap: 4px;
+    margin-top: 4px;
+  
+    .center-cell {
+      border: 1px dashed;
+  
+      button {
+        font-size: 12px;
+      }
+    }
+    
+    div {
+      padding: 2px;
+      width: 54px;
+      height: 54px;
+      border-radius: 4px;
+  
+      button {
+        padding: 1px;
+        border-radius: 4px;
+      }
+  
+      .cell-text {
+        font-size: 7.5px;
+      }
+  
+      .cell-number {
+        font-size: 7.5px;
       }
     }
   }

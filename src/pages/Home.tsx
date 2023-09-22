@@ -73,7 +73,15 @@ function Home() {
               {cell.id === 13 ? (
                 <button type="button" className={isWinner ? 'win' : ''}>
                   <span className="cell-text">
-                    {isWinner ? 'BINGO!' : cell.text}
+                    {isWinner ? (
+                      <>
+                        BINGO! <br /> &#128526;
+                      </>
+                    ) : (
+                      <>
+                        {cell.text} <br /> &#128567;
+                      </>
+                    )}
                   </span>
                 </button>
               ) : (
