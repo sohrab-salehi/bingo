@@ -9,6 +9,7 @@ interface Cell {
 
 function Home() {
   const [cells, setCells] = useState(jsonConfig.default);
+  const [isWinner, setIsWinner] = useState(false);
 
   const checkBingo = (currentCells: Cell[]) => {
     const selectedCells = currentCells
@@ -23,11 +24,11 @@ function Home() {
       const column = selectedCells.filter((cell) => cell % 5 === i);
 
       if (row.length === 5) {
-        console.log(`Bingo in row ${i + 1}`);
+        setIsWinner(true);
       }
 
       if (column.length === 5) {
-        console.log(`Bingo in column ${i}`);
+        setIsWinner(true);
       }
     }
 
@@ -36,7 +37,7 @@ function Home() {
       [1, 7, 19, 25].includes(cell)
     );
     if (mainDiagonal.length === 4) {
-      console.log('Bingo in main diagonal');
+      setIsWinner(true);
     }
 
     // Check anti diagonal
@@ -44,7 +45,7 @@ function Home() {
       [5, 9, 17, 21].includes(cell)
     );
     if (antiDiagonal.length === 4) {
-      console.log('Bingo in anti-diagonal');
+      setIsWinner(true);
     }
   };
 
@@ -70,8 +71,10 @@ function Home() {
           {cells.slice(i * 5, (i + 1) * 5).map((cell: Cell) => (
             <div key={cell.id} className={cell.id === 13 ? 'center-cell' : ''}>
               {cell.id === 13 ? (
-                <button type="button">
-                  <span className="cell-text">{cell.text}</span>
+                <button type="button" className={isWinner ? 'win' : ''}>
+                  <span className="cell-text">
+                    {isWinner ? 'BINGO!' : cell.text}
+                  </span>
                 </button>
               ) : (
                 <button
