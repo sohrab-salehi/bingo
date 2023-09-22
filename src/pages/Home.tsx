@@ -39,6 +39,7 @@ function Home() {
       console.log('Bingo in main diagonal');
     }
 
+    // Check anti diagonal
     const antiDiagonal = selectedCells.filter((cell) =>
       [5, 9, 17, 21].includes(cell)
     );
@@ -67,9 +68,9 @@ function Home() {
       const row = (
         <div className="flex-container">
           {cells.slice(i * 5, (i + 1) * 5).map((cell: Cell) => (
-            <div key={cell.id}>
+            <div key={cell.id} className={cell.id === 13 ? 'center-cell' : ''}>
               {cell.id === 13 ? (
-                <button className="center-cell" type="button">
+                <button type="button">
                   <span className="cell-text">{cell.text}</span>
                 </button>
               ) : (
