@@ -65,7 +65,7 @@ function Home() {
   const resetGame = () => {
     setCells(jsonConfig.default);
     setIsWinner(false);
-  }
+  };
 
   const createBoard = () => {
     const board: JSX.Element[] = [];
@@ -110,7 +110,7 @@ function Home() {
 
   return (
     <div>
-      <button type="button" onClick={resetGame}>
+      <button className="restart-btn" type="button" onClick={resetGame}>
         Restart
       </button>
       {createBoard()}
