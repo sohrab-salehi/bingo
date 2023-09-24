@@ -62,6 +62,11 @@ function Home() {
     checkBingo(newCells);
   };
 
+  const resetGame = () => {
+    setCells(jsonConfig.default);
+    setIsWinner(false);
+  }
+
   const createBoard = () => {
     const board: JSX.Element[] = [];
 
@@ -103,7 +108,14 @@ function Home() {
     return board;
   };
 
-  return <div>{createBoard()}</div>;
+  return (
+    <div>
+      <button type="button" onClick={resetGame}>
+        Restart
+      </button>
+      {createBoard()}
+    </div>
+  );
 }
 
 export default Home;
