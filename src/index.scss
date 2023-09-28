@@ -43,13 +43,6 @@ body {
       font-weight: bold;
       font-size: 20px;
     }
-
-    .win {
-      animation: magnifyAndColorChange 2s ease-in-out infinite;
-      .cell-text {
-        color: white;
-      }
-    }
   }
   
   div {
@@ -105,21 +98,6 @@ body {
       }
     }
     
-  }
-}
-
-@keyframes magnifyAndColorChange {
-  0% {
-    transform: scale(1);
-    background-color: #ffec3d;
-  }
-  50% {
-    transform: scale(3);
-    background-color: #1677ff;
-  }
-  100% {
-    transform: scale(1);
-    background-color: #ffec3d;
   }
 }
 

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Confetti from 'react-confetti';
+
 import jsonConfig from '../gameConfigs';
 import Cell from '../types/Cell';
 import shuffleArrayWithException from '../utility/functions';
@@ -8,6 +10,7 @@ function Home() {
     shuffleArrayWithException(jsonConfig.default, 12)
   );
   const [isWinner, setIsWinner] = useState(false);
+  const [bingoLoc, setBingoLoc] = useState<string[]>([]);
 
   const checkBingo = (currentCells: Cell[]) => {
     const selectedCells = currentCells
@@ -21,11 +24,13 @@ function Home() {
       );
       const column = selectedCells.filter((cell) => cell % 5 === i);
 
-      if (row.length === 5) {
+      if (row.length === 5 && !bingoLoc.includes(`row_${i}`)) {
+        setBingoLoc([...bingoLoc, `row_${i}`]);
         setIsWinner(true);
       }
 
-      if (column.length === 5) {
+      if (column.length === 5 && !bingoLoc.includes(`col_${i}`)) {
+        setBingoLoc([...bingoLoc, `col_${i}`]);
         setIsWinner(true);
       }
     }
@@ -34,7 +39,8 @@ function Home() {
     const mainDiagonal = selectedCells.filter((cell) =>
       [1, 7, 19, 25].includes(cell)
     );
-    if (mainDiagonal.length === 4) {
+    if (mainDiagonal.length === 4 && !bingoLoc.includes('diag')) {
+      setBingoLoc([...bingoLoc, 'diag']);
       setIsWinner(true);
     }
 
@@ -42,7 +48,8 @@ function Home() {
     const antiDiagonal = selectedCells.filter((cell) =>
       [5, 9, 17, 21].includes(cell)
     );
-    if (antiDiagonal.length === 4) {
+    if (antiDiagonal.length === 4 && !bingoLoc.includes('a_diag')) {
+      setBingoLoc([...bingoLoc, 'a_diag']);
       setIsWinner(true);
     }
   };
@@ -77,14 +84,13 @@ function Home() {
                 <button type="button" className={isWinner ? 'win' : ''}>
                   <span className="cell-text">
                     {isWinner ? (
-                      <>
-                        BINGO! <br /> &#128526;
-                      </>
-                    ) : (
-                      <>
-                        {cell.text} <br /> &#128567;
-                      </>
-                    )}
+                      <Confetti
+                        numberOfPieces={500}
+                        recycle={false}
+                        onConfettiComplete={() => setIsWinner(false)}
+                      />
+                    ) : null}
+                    {cell.text} <br /> &#128567;
                   </span>
                 </button>
               ) : (
