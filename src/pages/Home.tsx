@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import jsonConfig from '../gameConfigs';
-
-interface Cell {
-  id: number;
-  text: string;
-  selected: boolean;
-}
+import Cell from '../types/Cell';
+import shuffleArrayWithException from '../utility/functions';
 
 function Home() {
-  const [cells, setCells] = useState(jsonConfig.default);
+  const [cells, setCells] = useState(
+    shuffleArrayWithException(jsonConfig.default, 12)
+  );
   const [isWinner, setIsWinner] = useState(false);
 
   const checkBingo = (currentCells: Cell[]) => {
@@ -63,7 +61,7 @@ function Home() {
   };
 
   const resetGame = () => {
-    setCells(jsonConfig.default);
+    setCells(shuffleArrayWithException(jsonConfig.default, 12));
     setIsWinner(false);
   };
 
