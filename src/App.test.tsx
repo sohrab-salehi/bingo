@@ -4,15 +4,6 @@ import App from './App';
 import jsonConfig from './gameConfigs';
 
 describe('App', () => {
-  // it('Renders Hello World!', () => {
-  //   // ARRANGE
-  //   render(<App />);
-  //   // ACT
-  //   // EXPECT
-  //   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-  //     'Hello World!'
-  //   );
-  // });
   it('Have all the tiles', () => {
     render(<App />);
     const texts = jsonConfig.default.map((item) => {
@@ -80,6 +71,35 @@ describe('App', () => {
           screen.getByRole('button', { name: new RegExp(`.*${text}.*`) })
         ).toHaveClass('unselected');
       }
+    });
+  });
+
+  it('Test bingo in a row', () => {
+    render(<App />);
+
+    const rowTilesBeforeClick = screen.findAllByRole('button', {
+      name: /\b[1-5]\b/i,
+    });
+
+    rowTilesBeforeClick.then((tiles) => {
+      tiles.forEach((tile) => {
+        fireEvent(
+          tile,
+          new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+          })
+        );
+      });
+      const rowTilesAfterClick = screen.findAllByRole('button', {
+        name: /\b[1-5]\b/i,
+      });
+      rowTilesAfterClick.then((newTiles) => {
+        newTiles.forEach((tile) => {
+          expect(tile).toHaveClass('selected');
+        });
+        expect(screen.getByTestId('animation')).toBeVisible();
+      });
     });
   });
 });

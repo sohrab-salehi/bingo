@@ -85,6 +85,7 @@ function Home() {
                   <span className="cell-text">
                     {isWinner ? (
                       <Confetti
+                        data-testid="animation"
                         numberOfPieces={500}
                         recycle={false}
                         onConfettiComplete={() => setIsWinner(false)}
