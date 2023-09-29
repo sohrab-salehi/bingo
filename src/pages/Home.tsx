@@ -77,7 +77,7 @@ function Home() {
 
     for (let i = 0; i < 5; i += 1) {
       const row = (
-        <div className="flex-container">
+        <div key={`row_${i + 1}`} className="flex-container">
           {cells.slice(i * 5, (i + 1) * 5).map((cell: Cell) => (
             <div key={cell.id} className={cell.id === 13 ? 'center-cell' : ''}>
               {cell.id === 13 ? (
